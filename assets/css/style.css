@@ -1,0 +1,1225 @@
+/* RESET-GERAL: Reset básico para todos os elementos */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* BODY-GERAL: Estilos gerais do corpo da página */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 10px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+    color: #34495e;
+}
+
+/* HEADER-GERAL: Estilos gerais do cabeçalho */
+.site-header {
+    background: #2c3e50;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+}
+
+/* HEADER-CONTAINER: Contêiner do cabeçalho */
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    position: relative; /* Para conter o menu */
+}
+
+/* LOGO-LINK: Link da logo */
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+/* LOGO-IMG: Imagem da logo */
+.logo {
+    width: 80px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+/* LOGO-HOVER: Efeito hover na logo */
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* MENU-TOGGLE: Botão de toggle do menu (mobile) */
+.menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.3s ease;
+    z-index: 1001;
+    outline: none;
+}
+
+/* MENU-TOGGLE-HOVER: Efeito hover no botão de toggle */
+.menu-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* MENU-TOGGLE-FOCUS: Estilo de foco no botão de toggle */
+.menu-toggle:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* MENU-NAV: Navegação principal (base para mobile) */
+.main-nav {
+    visibility: hidden; /* Escondido por padrão em mobile */
+    height: 0; /* Sem altura inicialmente */
+    width: 100%;
+    background: #2c3e50; /* Fundo sólido */
+    opacity: 1;
+    transition: height 0.3s ease, visibility 0s 0.3s; /* Transição suave */
+}
+
+/* MENU-NAV-ACTIVE: Navegação ativa (mobile) */
+.main-nav.active {
+    visibility: visible; /* Torna visível */
+    height: auto; /* Expande para o conteúdo */
+    min-height: 250px; /* Altura mínima para visibilidade */
+    padding: 15px;
+    background: #2c3e50;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: height 0.3s ease, visibility 0s 0s; /* Transição imediata */
+    z-index: 1000;
+}
+
+/* NAV-LIST: Lista de links de navegação */
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* NAV-LIST-SEPARATOR: Separador entre links */
+.nav-list li:not(:last-child) .nav-link::after {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    margin-left: 15px;
+    vertical-align: middle;
+}
+
+/* NAV-LINK: Estilo dos links de navegação */
+.nav-link, .logout-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    display: block;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background: none;
+}
+
+/* NAV-LINK-HOVER: Efeito hover nos links */
+.nav-link:hover, .logout-link:hover {
+    color: #3498db;
+    background: rgba(52, 152, 219, 0.2);
+    transform: translateX(5px);
+}
+
+/* NAV-LINK-FOCUS: Estilo de foco nos links */
+.nav-link:focus, .logout-link:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* LOGOUT-LINK: Estilo específico do link de logout */
+.logout-link {
+    color: #e74c3c;
+}
+
+/* LOGOUT-LINK-HOVER: Efeito hover no link de logout */
+.logout-link:hover {
+    color: #c0392b;
+    background: rgba(231, 76, 60, 0.2);
+}
+
+/* DASHBOARD-CONTAINER: Contêiner principal do painel */
+.dashboard-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    background: linear-gradient(to bottom, #f5f7fa, #e0e7f5);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: padding 0.3s ease;
+}
+
+/* DASHBOARD-TITLE: Títulos principais */
+.dashboard-title {
+    color: #1a252f;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    transition: font-size 0.3s ease;
+}
+
+/* INTRO-TEXT: Textos introdutórios e subtítulos */
+.intro-text, .ranking-subtitle {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* CARD-GERAL: Estilos gerais dos cards */
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 4px rgba(255, 255, 255, 0.3);
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* CARD-HOVER: Efeito hover nos cards */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* CARD-BEFORE: Linha decorativa no topo dos cards */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #27ae60, #f1c40f);
+    opacity: 0.9;
+}
+
+/* CARD-AFTER: Fundo interno dos cards */
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: -1;
+}
+
+/* CARD-TITLE: Títulos dos cards */
+.card-title {
+    color: #1a252f;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #3498db;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* CARD-ICON: Ícones nos cards */
+.card-icon {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    transition: transform 0.3s ease;
+}
+
+/* CARD-ICON-HOVER: Efeito hover nos ícones */
+.card-icon:hover {
+    transform: scale(1.2);
+    color: #3498db;
+}
+
+/* CARD-BORDERS: Bordas coloridas dos cards */
+.blue-border::before { background: linear-gradient(90deg, #3498db, #2980b9); }
+.green-border::before { background: linear-gradient(90deg, #27ae60, #2ecc71); }
+.yellow-border::before { background: linear-gradient(90deg, #f1c40f, #f4d03f); }
+.gray-border::before { background: linear-gradient(90deg, #7f8c8d, #95a5a6); }
+.success-border { border: 2px solid #27ae60; }
+.error-border { border: 2px solid #e74c3c; }
+
+/* FORM-GROUP: Grupos de formulário */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* FORM-LABEL: Rótulos dos formulários */
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* FORM-INPUT: Campos de entrada */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background: #f8f9fa;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* FORM-INPUT-FOCUS: Foco nos campos de entrada */
+.input-field:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
+}
+
+/* BUTTON-GERAL: Estilos gerais dos botões */
+.btn, .prova-link, .action-column a {
+    display: inline-block;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* BUTTON-PRIMARY: Botão primário */
+.btn-primary, .prova-link:not(.disabled) {
+    background: #3498db;
+    color: white;
+}
+
+/* BUTTON-PRIMARY-HOVER: Hover no botão primário */
+.btn-primary:hover, .prova-link:hover:not(.disabled) {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(41, 128, 185, 0.3);
+}
+
+/* BUTTON-SECONDARY: Botão secundário */
+.btn-secondary {
+    background: #7f8c8d;
+    color: white;
+}
+
+/* BUTTON-SECONDARY-HOVER: Hover no botão secundário */
+.btn-secondary:hover {
+    background: #95a5a6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(149, 165, 166, 0.3);
+}
+
+/* BUTTON-ACTION: Botão de ação */
+.btn-action {
+    background: #3498db;
+    color: white;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+/* BUTTON-ACTION-HOVER: Hover no botão de ação */
+.btn-action:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(41, 128, 185, 0.3);
+}
+
+/* BUTTON-DANGER: Botão de perigo */
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+}
+
+/* BUTTON-DANGER-HOVER: Hover no botão de perigo */
+.btn-danger:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+/* BUTTON-DISABLED: Botão desativado */
+.prova-link.disabled, .btn-action.disabled {
+    background: #7f8c8d;
+    color: white;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* BUTTON-FOCUS: Foco nos botões */
+.btn:focus, .prova-link:focus, .action-column a:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* MESSAGE-SUCCESS: Mensagem de sucesso */
+.success-message {
+    color: #27ae60;
+    background: #e8f5e9;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(39, 174, 96, 0.1);
+}
+
+/* MESSAGE-ERROR: Mensagem de erro */
+.error-message {
+    color: #e74c3c;
+    background: #ffebee;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.1);
+}
+
+/* FEATURES-GRID: Grade de recursos */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+/* FEATURE-CARD: Card de recurso */
+.feature-card {
+    text-align: center;
+    padding: 20px;
+}
+
+/* FEATURE-ICON: Ícone de recurso */
+.feature-icon {
+    margin-bottom: 10px;
+}
+
+/* ICON-GERAL: Ícones gerais */
+.icon {
+    width: 60px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+/* ICON-HOVER: Hover nos ícones */
+.icon:hover {
+    transform: scale(1.1);
+}
+
+/* CTA-BUTTONS: Botões de chamada à ação */
+.cta-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* PANEL-HEADER: Cabeçalho do painel */
+.panel-header {
+    margin-bottom: 20px;
+}
+
+/* PROFILE-INFO: Informações do perfil */
+.profile-info p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+}
+
+/* STATS-GRID: Grade de estatísticas */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* STAT-ITEM: Item de estatística */
+.stat-item {
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+/* STAT-ITEM-HOVER: Hover no item de estatística */
+.stat-item:hover {
+    transform: translateY(-2px);
+}
+
+/* STAT-NUMBER: Número da estatística */
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+/* STAT-NUMBER-VARIANTS: Variantes do número da estatística */
+.stat-number.high { color: #27ae60; }
+.stat-number.low { color: #e74c3c; }
+
+/* STAT-LABEL: Rótulo da estatística */
+.stat-label {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+
+/* PROGRESS-CARD: Card de progresso */
+.progress-card {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* PROGRESS-ITEM: Item de progresso */
+.progress-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* PROGRESS-ITEM-HOVER: Hover no item de progresso */
+.progress-item:hover {
+    transform: translateY(-2px);
+}
+
+/* PROGRESS-LABEL: Rótulo do progresso */
+.progress-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* PROGRESS-BAR: Barra de progresso */
+.progress-bar {
+    width: 100%;
+    height: 16px;
+    background: #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* PROGRESS-FILL: Preenchimento da barra de progresso */
+.progress {
+    height: 100%;
+    transition: width 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* PROGRESS-VARIANTS: Variantes da barra de progresso */
+.progress.approved { background: linear-gradient(45deg, #27ae60, #2ecc71); }
+.progress.failed { background: linear-gradient(45deg, #e74c3c, #c0392b); }
+.progress.pending { background: linear-gradient(45deg, #7f8c8d, #95a5a6); }
+
+/* PROGRESS-SCORE: Pontuação do progresso */
+.progress-score {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* PROVA-CARD: Card de prova */
+.prova-card {
+    padding: 15px;
+}
+
+/* PROVA-INTRO: Texto introdutório da prova */
+.prova-intro {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* PROVA-TIMER: Temporizador da prova */
+.timer {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* QUESTION-GROUP: Grupo de questões */
+.question-group {
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 15px;
+}
+
+/* QUESTION-TEXT: Texto da questão */
+.question-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+/* OPTIONS-CONTAINER: Contêiner de opções */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* OPTION-LABEL: Rótulo da opção */
+.option-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px;
+    background: white;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* OPTION-LABEL-HOVER: Hover no rótulo da opção */
+.option-label:hover {
+    background: #e9ecef;
+}
+
+/* OPTION-TEXT: Texto da opção */
+.option-text {
+    color: #34495e;
+}
+
+/* PROVA-FORM: Formulário de prova */
+.prova-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* PROVAS-GRID: Grade de provas */
+.provas-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+/* PROVA-ITEM: Item de prova */
+.prova-item {
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* PROVA-LINK: Link de prova */
+.prova-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 600;
+    color: #3498db;
+    padding: 8px;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+/* PROVA-LINK-HOVER: Hover no link de prova */
+.prova-link:hover:not(.disabled) {
+    color: #2980b9;
+}
+
+/* PROVA-LINK-DISABLED: Link de prova desativado */
+.prova-link.disabled {
+    color: #7f8c8d;
+    text-decoration: line-through;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* PROVA-TITLE: Título da prova */
+.prova-title {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+/* PROVA-STATUS: Status da prova */
+.prova-status, .prova-blocked {
+    font-size: 0.85rem;
+    color: #34495e;
+}
+
+/* PROVA-BLOCKED: Status bloqueado da prova */
+.prova-blocked {
+    color: #e74c3c;
+    font-style: italic;
+}
+
+/* CERTIFICATES-TABLE: Tabela de certificados */
+.certificates-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    display: block;
+}
+
+/* CERTIFICATES-TABLE-CELLS: Células da tabela de certificados */
+.certificates-table th, .certificates-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+/* CERTIFICATES-TABLE-HEADER: Cabeçalho da tabela de certificados */
+.certificates-table th {
+    background: #ecf0f1;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* CERTIFICATES-TABLE-ROW-EVEN: Linhas pares da tabela */
+.certificates-table tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+/* CERTIFICATES-TABLE-ROW-HOVER: Hover nas linhas da tabela */
+.certificates-table tr:hover {
+    background: #e9ecef;
+}
+
+/* STATUS-VARIANTS: Variantes de status */
+.status-approved { color: #2ecc71; font-weight: bold; }
+.status-failed { color: #e74c3c; font-weight: bold; }
+.status-pending { color: #7f8c8d; font-weight: bold; }
+
+/* ACTION-COLUMN: Coluna de ações */
+.action-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* RANKING-TABLE: Tabela de ranking */
+.ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    display: block;
+}
+
+/* RANKING-TABLE-CELLS: Células da tabela de ranking */
+.ranking-table th, .ranking-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+/* RANKING-TABLE-HEADER: Cabeçalho da tabela de ranking */
+.ranking-table th {
+    background: #ecf0f1;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* RANKING-TABLE-ROW-EVEN: Linhas pares da tabela de ranking */
+.ranking-table tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+/* RANKING-TABLE-ROW-HOVER: Hover nas linhas de ranking */
+.ranking-table tr:hover {
+    background: #e9ecef;
+}
+
+/* RANKING-TOP: Estilos para os top 3 do ranking */
+.ranking-top-1 { 
+    background: #fff3e0; 
+    border-left: 4px solid #f1c40f;
+}
+.ranking-top-2 { 
+    background: #f5f6f5; 
+    border-left: 4px solid #95a5a6;
+}
+.ranking-top-3 { 
+    background: #f9ebea; 
+    border-left: 4px solid #d35400;
+}
+
+/* RANKING-POSITION: Cores das posições do ranking */
+.ranking-position .gold { color: #f1c40f; }
+.ranking-position .silver { color: #95a5a6; }
+.ranking-position .bronze { color: #d35400; }
+
+/* RANKING-FILTER: Filtro do ranking */
+.ranking-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* VALIDAR-CERTIFICADO-CARD: Card de validação de certificado */
+.validar-certificado-card {
+    padding: 20px;
+}
+
+/* VALIDAR-CERTIFICADO-FORM: Formulário de validação */
+.validar-certificado-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* CERTIFICADO-CONTENT: Conteúdo do certificado */
+.certificado-content p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+}
+
+/* CERTIFICADO-ACTIONS: Ações do certificado */
+.certificado-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* ADMIN-TABS: Abas de administração */
+.admin-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* ADMIN-TAB: Aba individual de administração */
+.admin-tab {
+    padding: 10px 15px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* ADMIN-TAB-HOVER: Hover na aba de administração */
+.admin-tab:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* ADMIN-TAB-ACTIVE: Aba ativa de administração */
+.admin-tab.active {
+    background: #27ae60;
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+}
+
+/* ADMIN-TABLE: Tabela de administração */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    display: block;
+}
+
+/* ADMIN-TABLE-CELLS: Células da tabela de administração */
+.admin-table th, .admin-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+/* ADMIN-TABLE-HEADER: Cabeçalho da tabela de administração */
+.admin-table th {
+    background: #ecf0f1;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* ADMIN-TABLE-ROW-EVEN: Linhas pares da tabela */
+.admin-table tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+/* ADMIN-TABLE-ROW-HOVER: Hover nas linhas da tabela */
+.admin-table tr:hover {
+    background: #e9ecef;
+}
+
+/* INLINE-FORM: Formulário inline */
+.inline-form {
+    display: inline;
+}
+
+/* OVERLAY-GERAL: Overlay geral (modal e overlay) */
+.name-update-overlay, .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+/* OVERLAY-ACTIVE: Overlay ativo */
+.name-update-overlay.active, .modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* NAME-UPDATE-CARD: Card de atualização de nome */
+.name-update-card, .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+    animation: slideIn 0.3s ease-out;
+}
+
+/* NAME-UPDATE-CARD-BORDER: Borda do card de atualização */
+.name-update-card {
+    border: 2px solid #e74c3c;
+}
+
+/* NAME-UPDATE-CARD-TITLE: Título do card de atualização */
+.name-update-card .card-title {
+    color: #e74c3c;
+    border-bottom: 2px solid #e74c3c;
+}
+
+/* MODAL-CONTENT: Conteúdo do modal */
+.modal-content {
+    border: 2px solid #3498db;
+}
+
+/* MODAL-CONTENT-TITLE: Título do modal */
+.modal-content .card-title {
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
+}
+
+/* MODAL-CLOSE: Botão de fechar modal */
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* MODAL-CLOSE-HOVER: Hover no botão de fechar */
+.modal-close:hover {
+    background: #c0392b;
+    transform: scale(1.1);
+}
+
+/* FORM-ADMIN: Formulários de administração */
+.admin-form, .name-form, .validar-certificado-form, .ranking-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* MODAL-ACTIONS: Ações do modal */
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* FOOTER-GERAL: Estilos gerais do rodapé */
+.site-footer {
+    background: #2c3e50;
+    color: #7f8c8d;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    border-radius: 10px 10px 0 0;
+}
+
+/* FOOTER-CONTAINER: Contêiner do rodapé */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* FOOTER-SOCIAL: Links sociais no rodapé */
+.footer-social a {
+    color: #7f8c8d;
+    font-size: 1rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+/* FOOTER-SOCIAL-HOVER: Hover nos links sociais */
+.footer-social a:hover {
+    color: #3498db;
+}
+
+/* NO-HEADER-FOOTER: Estilo para esconder header e footer */
+.no-header-footer {
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.no-header-footer .site-header,
+.no-header-footer .site-footer,
+.no-header-footer .main-content {
+    display: none !important;
+}
+
+/* FULL-SCREEN-OVERLAY: Overlay de tela cheia */
+.full-screen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FULL-SCREEN-OVERLAY-CARD: Card do overlay de tela cheia */
+.full-screen-overlay .name-update-card {
+    max-width: 500px;
+    width: 90%;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border: 2px solid #e74c3c;
+}
+
+/* FULL-SCREEN-OVERLAY-TITLE: Título do overlay */
+.full-screen-overlay .name-update-card .card-title {
+    font-size: 1.5rem;
+    color: #e74c3c;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 10px;
+}
+
+/* FULL-SCREEN-OVERLAY-TEXT: Texto do overlay */
+.full-screen-overlay .highlight-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* MODAL-GERAL: Estilos gerais do modal */
+.modal {
+    display: none;
+    z-index: 10000;
+}
+
+/* MODAL-FLEX: Estilo inline para modal visível */
+.modal[style*="display: flex"] {
+    display: flex !important;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* HIDDEN: Classe para esconder elementos */
+.hidden {
+    display: none;
+}
+
+/* ANIMATIONS: Animações gerais */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE-DESKTOP: Media query para desktop (min-width: 768px) */
+@media (min-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .dashboard-container {
+        padding: 20px;
+    }
+
+    .dashboard-title {
+        font-size: 2rem;
+    }
+
+    .logo {
+        width: 100px;
+    }
+
+    .main-nav {
+        display: flex; /* Sempre visível no desktop */
+        position: static;
+        background: none;
+        padding: 0;
+        box-shadow: none;
+        width: auto;
+        visibility: visible;
+        height: auto;
+    }
+
+    .nav-list {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .nav-link, .logout-link {
+        font-size: 1rem;
+    }
+
+    .menu-toggle {
+        display: none; /* Escondido no desktop */
+    }
+
+    .card {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+    }
+
+    .features-grid, .provas-grid, .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .progress-item, .certificado-actions, .modal-actions, .ranking-filter, .action-column {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .progress-label {
+        flex: 0 0 100px;
+        text-align: left;
+    }
+
+    .progress-score {
+        flex: 0 0 70px;
+    }
+
+    .admin-tabs {
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .certificates-table, .ranking-table, .admin-table {
+        font-size: 0.9rem;
+        overflow-x: visible;
+    }
+
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* RESPONSIVE-LARGE-DESKTOP: Media query para telas grandes (min-width: 1024px) */
+@media (min-width: 1024px) {
+    .dashboard-title {
+        font-size: 2.2rem;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .progress-label {
+        flex: 0 0 120px;
+    }
+
+    .nav-link, .logout-link {
+        font-size: 1.1rem;
+    }
+}
+
+/* RESPONSIVE-MOBILE: Media query para mobile (max-width: 767px) */
+@media (max-width: 767px) {
+    .dashboard-container { padding: 10px; }
+    .card { padding: 10px; margin-bottom: 10px; }
+    .btn, .prova-link, .action-column a { padding: 8px 12px; font-size: 0.85rem; }
+    .certificates-table, .ranking-table, .admin-table { overflow-x: auto; }
+}
